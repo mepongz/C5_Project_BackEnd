@@ -107,6 +107,16 @@ class playerController extends Controller
      */
     public function destroy($id)
     {
-        $player = players::where(['id' => $id])->update(['is_active','0']);
+        $player = players::find($id);
+
+        $is_active = 1;
+        if($player->is_active){
+            $is_active = 0;
+        }
+        $player = players::where(['id' => $id])->update(['is_active' => $is_active]);
+
+        return new playerResource(
+            players::where(['id' => $id])->get()
+        );
     }
 }

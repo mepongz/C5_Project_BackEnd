@@ -45,6 +45,13 @@
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="p-12">
                             <h1> Welcome to NBA Stars API </h1>
+                            <ul>
+                                <li>Get All Star <br/> GET - http://c5.local/api/players/</li>
+                                <li>Get Player  <br/> GET - http://c5.local/api/players/{id_here}</li>
+                                <li>New Player  <br/> POST - http://c5.local/api/players/</li>
+                                <li>Update a Player  <br/> PUT - http://c5.local/api/players/{id_here}</li>
+                                <li>Activate/Deactivate a Player  <br/> DELETE - http://c5.local/api/players/{id_here}</li>
+                            </ul>
                         </div>
 
                     </div>
