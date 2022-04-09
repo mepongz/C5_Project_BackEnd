@@ -17,3 +17,21 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['prefix' => 'players'], function() {
+
+    // GET LIST OF PLAYERS
+    Route::get('/', 'App\Http\Controllers\playerController@index');
+    
+    // GET A PLAYER
+    Route::get('/{id}', 'App\Http\Controllers\playerController@show');
+
+    // POST NEW PLAYER
+    Route::post('/', 'App\Http\Controllers\playerController@store');
+
+    // PUT EXISTING PLAYER
+    Route::put('/{id}', 'App\Http\Controllers\playerController@update');
+
+    // REMOVE EXISTING PLAYER
+    Route::delete('/{id}', 'App\Http\Controllers\playerController@destroy');
+});
