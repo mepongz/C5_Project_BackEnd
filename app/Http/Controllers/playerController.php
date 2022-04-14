@@ -18,17 +18,26 @@ class playerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //Get all players
-        $players = players::with('team')->orderBy('first_name','asc')->get();
+
+        if($request->input('search')){
+            $players = players::with('team')
+                        ->where('first_name', 'like' , "%{$request->input('search')}%")
+                        ->orWhere('last_name', 'like', "%{$request->input('search')}%")
+                        ->orderBy('last_name','asc')->get();
+        }else{
+            $players = players::with('team')->orderBy('last_name','asc')->get();
+        }
+        
         
         return playerResource::collection($players);
     }
 
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in storage.p
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response

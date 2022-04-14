@@ -18,7 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix' => 'players'], function() {
+Route::group(['prefix' => 'players', 'middleware' => 'cors'], function() {
 
     // GET LIST OF PLAYERS
     Route::get('/', 'App\Http\Controllers\playerController@index');
